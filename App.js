@@ -22,7 +22,6 @@ export default class App extends React.Component {
     }));
   };
   render() {
-    console.log(this.state.contacts);
     return <AppNavigator screenProps={{ contacts: this.state.contacts }} />;
   }
 }

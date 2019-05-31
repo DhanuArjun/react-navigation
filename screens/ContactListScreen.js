@@ -36,7 +36,15 @@ export default class ContactListScreen extends React.Component {
     return (
       <View style={styles.container}>
         {this.state.showContacts && (
-          <SectionListContacts contacts={this.props.screenProps.contacts} />
+          <SectionListContacts
+            contacts={this.props.screenProps.contacts}
+            onSelectContact={contact => {
+              this.props.navigation.navigate('ContactDetails', {
+                phone: contact.phone,
+                name: contact.name
+              });
+            }}
+          />
         )}
       </View>
     );

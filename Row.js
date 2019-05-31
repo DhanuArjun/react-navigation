@@ -1,11 +1,16 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 
 const Row = props => (
-    <View style={{padding: 20}}>
-        <Text>{props.name}</Text>
-        <Text>{props.phone}</Text>
-    </View>
-)
+  <TouchableOpacity
+    style={{ padding: 20 }}
+    onPress={() => {
+      props.onSelectContact(props);
+    }}
+  >
+    <Text>{props.name}</Text>
+    <Text>{props.phone}</Text>
+  </TouchableOpacity>
+);
 
-export default Row
+export default Row;

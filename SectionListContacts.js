@@ -4,16 +4,17 @@ import PropTypes from 'prop-types';
 
 import Row from './Row';
 
-const renderItem = ({ item }) => <Row {...item} />;
-
 const renderSectionHeader = ({ section }) => <Text>{section.title}</Text>;
 
 const SectionListContacts = props => {
+  const renderItem = ({ item }) => (
+    <Row {...item} onSelectContact={props.onSelectContact} />
+  );
   const contactsByLetter = props.contacts.reduce((obj, contact) => {
     const firstLetter = contact.name[0].toUpperCase();
     return {
       ...obj,
-      [firstLetter]: [...(obj[firstLetter] || []), contact],
+      [firstLetter]: [...(obj[firstLetter] || []), contact]
     };
   }, {});
 
@@ -21,7 +22,7 @@ const SectionListContacts = props => {
     .sort()
     .map(letter => ({
       data: contactsByLetter[letter],
-      title: letter,
+      title: letter
     }));
 
   return (
@@ -34,7 +35,7 @@ const SectionListContacts = props => {
 };
 
 SectionListContacts.propTypes = {
-  contacts: PropTypes.array,
+  contacts: PropTypes.array
 };
 
 export default SectionListContacts;
